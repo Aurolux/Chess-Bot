@@ -1103,9 +1103,6 @@ async def on_message(message):
 			if args[0] == "server":
 				await channel.send("https://discord.gg/uV5y7RY")
 
-			if args[0] == "tournament":
-				await channel.send("**I see my little tournament has caught your eye.** Here are the steps to sign up.\n\n**1:** Join this server, https://discord.gg/uV5y7RY\n**2:** Sign up here using your Discord name and tag, https://challonge.com/tournaments/signup/TmwRIt1zFb\n**3:** That's it! Now wait for others to sign up, and maybe tell a friend.")
-
 
 			if args[0] == "invite":
 				await channel.send("https://discordapp.com/oauth2/authorize?client_id=366770566331629579&scope=bot&permissions=8")
@@ -1147,7 +1144,62 @@ async def on_message(message):
 
 
 			if args[0] == "test" and memid in config.ADMINS:
-				await channel.send("k")
+				n = 0
+				for guild in bot.guilds:
+					n+=1
+
+					if len(guild.members) <= 2000:
+						print(str(n))
+						try:
+							cs = [c for c in guild.channels if c.name in ["general", "bots", "commands", "bot-commands","bot", "botuse", "chess"]]
+							channel = cs[0]
+							em = discord.Embed()
+							em.title="Yet Another Chess Tournament!"
+							em.set_thumbnail(url=bot.user.avatar_url)
+							em.colour = discord.Colour(4623620)
+							em.type = "rich"
+							em.description = "My creator has decided they want to hold a second (yes a second) Chess tournament using the ChessBot (me!) The prize for winning will be 3000 tokens, a special role, and a tournament winner badge on your profile! There might be some money too but who knows.... Heres how to join:"
+							em.add_field(name="Step 1",value="Join the Chess Tournament server. You can get the invite link by doing the command "+prefix+"server.",inline=True)
+							em.add_field(name="Step 2",value="DM qwerty#6768 (my creator) telling him you want to join the tournament.")
+							em.add_field(name="Step 3",value="The tournament will only start once a certain amount of players have joined, so play the waiting game.")
+							em.set_footer(text="Tournament Games do not have to be played at set times. There will be cheat detection. This message will not come again.")
+							await channel.send(embed=em)
+						except:
+							try:
+								channel = cs[1]
+								em = discord.Embed()
+								em.title="Yet Another Chess Tournament!"
+								em.set_thumbnail(url=bot.user.avatar_url)
+								em.colour = discord.Colour(4623620)
+								em.type = "rich"
+								em.description = "My creator has decided they want to hold a second (yes a second) Chess tournament using the ChessBot (me!) The prize for winning will be 3000 tokens, a special role, and a tournament winner badge on your profile! There might be some money too but who knows.... Heres how to join:"
+								em.add_field(name="Step 1",value="Join the Chess Tournament server. You can get the invite link by doing the command "+prefix+"server.",inline=True)
+								em.add_field(name="Step 2",value="DM qwerty#6768 (my creator) telling him you want to join the tournament.")
+								em.add_field(name="Step 3",value="The tournament will only start once a certain amount of players have joined, so play the waiting game.")
+								em.set_footer(text="Tournament Games do not have to be played at set times. There will be cheat detection. This message will not come again.")
+								await channel.send(embed=em)
+							except Exception as E:
+								print(E)
+
+			if args[0] == "test2" and memid in config.ADMINS:
+					try:
+						await channel.trigger_typing()
+						em = discord.Embed()
+						em.title="Yet Another Chess Tournament!"
+						em.set_thumbnail(url=bot.user.avatar_url)
+						em.colour = discord.Colour(4623620)
+						em.type = "rich"
+						em.description = "My creator has decided they want to hold a second (yes a second) Chess tournament using the ChessBot (me!) The prize for winning will be 3000 tokens, a special role, and a tournament winner badge on your profile! There might be some money too but who knows.... Heres how to join:"
+						em.add_field(name="Step 1",value="Join the Chess Tournament server. You can get the invite link by doing the command "+prefix+"server.",inline=True)
+						em.add_field(name="Step 2",value="DM qwerty#6768 (my creator) telling him you want to join the tournament.")
+						em.add_field(name="Step 3",value="The tournament will only start once a certain amount of players have joined, so play the waiting game.")
+						em.set_footer(text="Tournament Games do not have to be played at set times. There will be cheat detection. This message will not come again.")
+						await channel.send(embed=em)
+					except:
+						pass
+
+
+
 
 
 
