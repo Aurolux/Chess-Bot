@@ -4,6 +4,8 @@ import datetime
 import random
 import config
 import itertools
+from bson.objectid import ObjectId
+
 client = MongoClient()
 db = client.chess
 users = db.users
@@ -44,6 +46,14 @@ def end_game(id, winner, loser, outcome):
 
 def get_game(userid):
     return games.find_one({"$or": [{"$and":[{"1":userid},{"done": False}]},  {"$and":[{"2":userid},{"done": False}]}]})
+
+
+def get_game_from_id(gameid):
+    return games.find_one({"_id": ObjectId(gameid)})
+
+
+def get_games(userid):
+    return games.find({"$or": [{"1":userid},{"2":userid}]}).sort('timestamp',-1)
 
 def get_game_recent(userid):
     return games.find({"$or": [{"1":userid},  {"2":userid}]}).sort('timestamp',-1).next()
@@ -104,7 +114,7 @@ def delete_team(id):
 
 
 def new_user(id,name):
-    data = {"name":name,"id":id,"team": None, "wins":0,"loss":0,"draws":0,"games":0,"xp":0,"cur":10000,"unique":[],"badges": [], "votes": 0, "skins": ["default"], "inv": [],"skin": "default", "bio": None, "blacklisted": False, "color": config.COLOR}
+    data = {"name":name,"id":id,"team": None, "wins":0,"loss":0,"draws":0,"games":0,"xp":0,"cur":10000,"unique":[],"badges": [], "votes": 0, "skins": ["default"], "inv": [],"skin": "default", "bio": None, "blacklisted": False, "color": config.COLOR, "elo": 1600}
     users.insert_one(data)
 
 def update_user(id,key,value):

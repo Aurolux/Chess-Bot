@@ -2,7 +2,11 @@ import requests
 from tok import *
 SHARD_COUNT = 3
 
+BOTURL = "https://discordbots.org/bot/366770566331629579"
 
+MOTD = ""
+
+ELO_K = 75
 
 COLOR = 4623620
 DBLURL = "https://discordbots.org/api/bots/366770566331629579/stats"
@@ -17,9 +21,8 @@ DISCHEADERS = {"Authorization" : "Bot "+BOTTOKEN}
 
 ID = 366770566331629579
 
-MOTD = "|help"
 
-prices = {"richbadge": (20000,"badge","rich"), "chumpchangebadge": (500,"badge","chump-change")}
+prices = {"richbadge": (20000,"badge","rich"), "chumpchangebadge": (500,"badge","chump-change"), "teamworkmedal": (50000,"item","teamworkmedal")}
 
 PREFIX = "|"
 
@@ -87,7 +90,7 @@ JOKES = [
 "Why can't administrative officers win at chess? Because they can't stop to watch the clock.",
 "What's the difference between a chess player and a highway construction worker? A chess player moves every now and then.",
 "What do Kramnik and a wellhouse pump have in common? They could both draw water.",
-"Chuck Norris doesn’t play chess anymore. He found checkmating opponents in 1 move to be boring.",
+"Chuck Norris doesn't play chess anymore. He found checkmating opponents in 1 move to be boring.",
 "I was having dinner with Garry Kasporov – problem was, we had a checkered tablecloth and it took him an hour to pass the salt!",
 "What's the difference between a professional chess player and a large cheese pizza? The pizza can feed a family of four.",
 "Which group of women are the best chess players? Feminists. Their opponents begin with King and Queen, but *they* always start with 2 Queens.",
