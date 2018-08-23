@@ -30,9 +30,6 @@ async def main(args=None, command=None, bot=None, prefix=None, msg=None, message
 		elif args[1].lower() == "votes":
 			unit = "votes"
 			lead = db.leaderboard(8,"votes")
-		elif args[1].lower() == "shards":
-			unit = "cur"
-			lead = db.leaderboard(8,"cur")
 
 		elif args[1].lower() == "teams":
 			unit = "cur"

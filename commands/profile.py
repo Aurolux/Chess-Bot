@@ -22,7 +22,6 @@ async def main(args=None, command=None, bot=None, prefix=None, msg=None, message
 	em.type = "rich"
 	if user["bio"] !=None:
 		em.description = user["bio"]
-	em.add_field(name="Shards",value=user["cur"],inline=True)
 	em.add_field(name="Elo",value=user["elo"],inline=True)
 	em.add_field(name="Tokens",value=user["xp"],inline=True)
 	em.add_field(name="Wins",value=user["wins"],inline=True)

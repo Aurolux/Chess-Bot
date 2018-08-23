@@ -36,13 +36,10 @@ async def reward_game(winner,loser,outcome, gamedata, channel, bot):
 		guildid = channel.guild.id
 
 		if (outcome == "resign" and len(gamedata["moves"]) >= 10) or outcome == "checkmate":
-			mon = int(loser["cur"]*0.05)
 			db.inc_user(winner["id"],"wins",1)
 			db.inc_user(loser["id"],"loss",1)
 			db.inc_user(winner["id"],"games",1)
 			db.inc_user(loser["id"],"games",1)
-			db.inc_user(winner["id"],"cur",mon)
-			db.inc_user(loser["id"],"cur",-mon)
 			if loser["id"] not in winner["unique"]:
 				db.push_user(winner["id"], "unique", loser["id"])
 				db.inc_user(winner["id"],"xp",150)
@@ -124,9 +121,15 @@ async def reward_game(winner,loser,outcome, gamedata, channel, bot):
 				db.push_user(winner["id"], "badges", "addicted")
 				await channel.send("<@!"+str(winner["id"])+">, congratulations! You have earned the Addicted badge!")
 		if loser["games"] == 24:
-			if not "addicted" in winner["badges"]:
+			if not "addicted" in loser["badges"]:
 				db.push_user(loser["id"], "badges", "addicted")
 				await channel.send("<@!"+str(loser["id"])+">, congratulations! You have earned the Addicted badge!")
+
+		if loser["id"] == 206519445160460288:
+			if not "beat-moca" in winner["badges"] and outcome in ["resign", "checkmate"]:
+				db.push_user(winner["id"], "badges", "beat-moca")
+				await channel.send("<@!"+str(winner["id"])+">, congratulations! You have earned the Beat Moca badge!")
+
 
 	else:
 		await channel.send("<@!"+str(loser["id"])+">, congratulations! You have earned the Addicted badge!")

@@ -34,7 +34,7 @@ LOGCHANNEL = 436342882551595008
 REPORTCHANNEL = 447451872337461248
 
 
-BADGES = {"tournament-first-place": "\U0001f947", "tournament-second-place": "\U0001f948", "developer": "\U00002699", "voter": "\U0001f4dd","artist":"\U0001f3a8", "rich": "\U0001f4b0", "chump-change": "\U0001f4b8", "pro": "\U00002694", "expert": "\U0001f5e1", "novice": "\U0001f4a1", "addicted": "\U0001f48a", "international-master": "\U0001f3c6", "patron": "\U0001f4b3", "partner": "\U0001f517", "chess-bot-master": "\U0001f3f3"}
+BADGES = {"tournament-first-place": "\U0001f947", "tournament-second-place": "\U0001f948", "developer": "\U00002699", "voter": "\U0001f4dd","artist":"\U0001f3a8", "rich": "\U0001f4b0", "chump-change": "\U0001f4b8", "pro": "\U00002694", "expert": "\U0001f5e1", "novice": "\U0001f4a1", "addicted": "\U0001f48a", "international-master": "\U0001f3c6", "patron": "\U0001f4b3", "partner": "\U0001f517", "chess-bot-master": "\U0001f3f3", "beat-moca": "<:mocaREEE:476893827165192192>"}
 
 
 

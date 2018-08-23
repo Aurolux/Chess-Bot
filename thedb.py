@@ -114,7 +114,7 @@ def delete_team(id):
 
 
 def new_user(id,name):
-    data = {"name":name,"id":id,"team": None, "wins":0,"loss":0,"draws":0,"games":0,"xp":0,"cur":10000,"unique":[],"badges": [], "votes": 0, "skins": ["default"], "inv": [],"skin": "default", "bio": None, "blacklisted": False, "color": config.COLOR, "elo": 1600}
+    data = {"name":name,"id":id,"team": None, "wins":0,"loss":0,"draws":0,"games":0,"xp":0,"unique":[],"badges": [], "votes": 0, "skins": ["default"], "inv": [],"skin": "default", "bio": None, "blacklisted": False, "color": config.COLOR, "elo": 1600}
     users.insert_one(data)
 
 def update_user(id,key,value):
@@ -136,13 +136,13 @@ def add_badge(id,badge):
 def remove_badge(id,badge):
     users.update_one({"id":id},{"$pull": {"badges":badge}})
 
-def leaderboard(limit,sort="cur"):
+def leaderboard(limit,sort="elo"):
     return [i for i in db.users.find({"games": {"$gt": 0}}).sort(sort,-1).limit(limit)]
 
 def leaderboardteams(limit,sort="cur"):
     return [i for i in db.teams.find({"games": {"$gt": 0}}).sort(sort,-1).limit(limit)]
 
-def leaderboardguild(guild,sort="cur"):
+def leaderboardguild(guild,sort="elo"):
     ids = [i.id for i in guild.members]
     return [i for i in itertools.islice((i for i in db.users.find({"games": {"$gt": 0}}).sort(sort,-1) if i["id"] in ids),8)]
 

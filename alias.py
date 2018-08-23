@@ -5,6 +5,7 @@ ALIASES = {
     "about": about.main,
     "analyze": analyze.main,
     "an": analyze.main,
+    "await": debugawait.main,
     "badge": badge.main,
     "bio": bio.main,
     "board": board.main,
@@ -63,5 +64,6 @@ ALIASES = {
     "vote": vote.main,
     "accept": None,
     "join": None,
-    "decline": None
+    "decline": None,
+    "mosthype": mosthype.main,
 }
